@@ -21,7 +21,7 @@ class phpBBUserValidation extends \phpbb\auth\provider\base {
     /**
      * {@inheritdoc}
      */
-    public function login($username, $password) {
+    public function login($email, $password) {
         // Auth plugins get the password untrimmed.
         // For compatibility we trim() here.
         $password = trim($password);
@@ -43,12 +43,10 @@ class phpBBUserValidation extends \phpbb\auth\provider\base {
             );
         }
 
-        //$username_clean = utf8_clean_string($username);
-        $username_clean = $username;
-
+       
         $sql = 'SELECT user_id, username, user_password, user_passchg, user_email, user_type, user_login_attempts
             FROM ' . USERS_TABLE . "
-            WHERE username_clean = '" . $this->db->sql_escape($username_clean) . "'";
+            WHERE user_email = '" . $this->db->sql_escape($email) . "'";
         $result = $this->db->sql_query($sql);
         $row = $this->db->sql_fetchrow($result);
         $this->db->sql_freeresult($result);
