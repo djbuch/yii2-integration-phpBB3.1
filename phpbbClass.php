@@ -19,7 +19,7 @@ class phpbbClass {
 
     //constructor
     public function __construct($path, $php_extension = "php") {
-        global $phpbb_root_path, $phpEx, $db, $config, $user, $auth, $cache, $template;
+        global $phpbb_root_path, $phpEx, $db, $config, $user, $auth, $cache, $template, $table_prefix;
         define('IN_PHPBB', true);
         $phpbb_root_path = $path;
         $phpEx = $php_extension;
@@ -27,7 +27,7 @@ class phpbbClass {
 
     //initialize phpbb
     function init($prepare_for_login = false) {
-        global $dire, $phpbb_root_path, $phpEx, $db, $config, $user, $auth, $phpbb_dispatcher, $cache, $template, $request, $phpbb_container, $symfony_request, $phpbb_filesystem;
+        global $dire, $phpbb_root_path, $phpEx, $db, $config, $user, $auth, $phpbb_dispatcher, $cache, $template, $request, $phpbb_container, $symfony_request, $phpbb_filesystem, $table_prefix;
         if ($prepare_for_login && !defined("IN_LOGIN"))
             define("IN_LOGIN", true);
         require_once($phpbb_root_path . 'common.' . $phpEx);
