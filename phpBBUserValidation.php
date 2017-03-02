@@ -35,7 +35,7 @@ class phpBBUserValidation extends \phpbb\auth\provider\base {
             );
         }
 
-        if (!$username) {
+        if (!$email) {
             return array(
                 'status' => LOGIN_ERROR_USERNAME,
                 'error_msg' => 'LOGIN_ERROR_USERNAME',
