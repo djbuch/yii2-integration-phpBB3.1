@@ -7,6 +7,12 @@
             "email": "asklepiy@i.ua"
         }
     ],
+    "type": "yii2-extension",
+    "autoload": {
+        "psr-4": {
+            "nill\\forum\\": ""
+        }
+    },
     "minimum-stability": "dev",
     "require": {}
 }
