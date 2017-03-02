@@ -60,7 +60,7 @@ class PhpBBUserBahavior extends \yii\base\Behavior {
      * Следует перенести этот метод в backend
      */
     public function afterDelete($event) {
-        Yii::$app->phpBB->userDelete($this->owner->{$this->userAttr});
+        \Yii::$app->phpBB->userDelete($this->owner->{$this->userAttr});
     }
 
 }
