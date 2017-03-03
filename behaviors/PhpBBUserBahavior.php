@@ -50,7 +50,10 @@ class PhpBBUserBahavior extends \yii\base\Behavior {
      */
     public function confirm() {
         if ($this->owner->{$this->emailAttr}) {
-            \Yii::$app->phpBB->changeEmail($this->owner->{$this->userAttr}, $this->owner->{$this->emailAttr});
+            \Yii::$app->phpBB->changeEmail($this->owner->getOldAttribute($this->userAttr), $this->owner->{$this->emailAttr});
+        }
+        if ($this->owner->{$this->userAttr} && $this->owner->isAttributeChanged($this->userAttr)) {
+            \Yii::$app->phpBB->changeUsername($this->owner->getOldAttribute($this->userAttr), $this->owner->{$this->emailAttr});
         }
     }
 
