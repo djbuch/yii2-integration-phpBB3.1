@@ -139,7 +139,7 @@ class phpbbClass {
             "user_type" => !isset($phpbb_vars["user_type"]) ? "0" : $phpbb_vars["user_type"],
             "user_actkey" => "",
             "user_dateformat" => "D M d, Y g:i a",
-            "user_style" => "1",
+            "user_style" => "2",
             "user_regdate" => time(),
             "user_colour" => "9E8DA7",
         );
