@@ -19,6 +19,12 @@ class PhpBBWebUser extends User {
 
     protected function afterLogin($identity, $fromCookie, $duration) {
         if ($this->_identity !== null) {
+            if ($this->_identity->forum_username == '' && $this->_identity->possible_forum_username != '') {
+                $this->_identity->forum_username = $this->_identity->possible_forum_username;
+                $this->_identity->save(false);
+                \Yii::$app->phpBB->userAdd($this->_identity->forum_username, $this->_identity->password_reg, $this->_identity->email, 2);
+            }
+
             if (\Yii::$app->phpBB->login($this->_identity->forum_username, $this->_identity->password_reg) != 'SUCCESS') {
                 throw new InvalidParamException('Не удалось пройти авторизацию на форуме');
             }
